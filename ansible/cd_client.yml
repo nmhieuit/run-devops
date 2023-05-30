@@ -1,5 +1,7 @@
 - hosts: kubernetes
   # become: true
+  user: ansadmin
+  
   tasks:
   - name: deploy docker image to container
     command: kubectl apply -f /run-devops/k8s/shoppingclient.yaml
