@@ -1,5 +1,6 @@
 - hosts: kubernetes
-  become: true
+  # become: true
+  user: root
   tasks:
   - name: deploy docker image to container
     command: kubectl apply -f shoppingclient.yaml
