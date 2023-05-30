@@ -41,7 +41,7 @@ kind: Service
 metadata:
   name: shoppingapi-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: shoppingapi
   ports:
