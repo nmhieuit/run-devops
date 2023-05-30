@@ -1,7 +1,11 @@
 - hosts: localhost
   become: true
   tasks:
-  - name: building docker image
+
+  - name: rebuild docker images
+    command: docker-compose -f /home/ansadmin/Shopping/docker-compose.yml -f /home/ansadmin/Shopping/docker-compose.override.yml build
+
+  - name: create docker container
     command: docker-compose -f /home/ansadmin/Shopping/docker-compose.yml -f /home/ansadmin/Shopping/docker-compose.override.yml up -d
 
   - name: tag docker image
