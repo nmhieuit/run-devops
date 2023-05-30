@@ -2,4 +2,4 @@
   become: true
   tasks:
   - name: deploy docker image to container
-    command: kubectl apply -f /home/ansadmin/run-devops/k8s/shoppingclient.yaml
+    command: kubectl apply -f run-devops/k8s/shoppingclient.yaml
