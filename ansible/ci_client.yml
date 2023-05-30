@@ -1,0 +1,14 @@
+- hosts: localhost
+  become: true
+  tasks:
+  - name: building docker image
+    command: docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+  - name: tag docker image
+    command: docker tag shoppingclient:latest nmhieuit/shoppingclient:latest
+
+  - name: login docker hub
+    command: docker login -u nmhieuit -p Hieu@1983
+
+  - name: push docker image
+    command: docker push nmhieuit/shoppingclient:latest
