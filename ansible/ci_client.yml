@@ -2,7 +2,7 @@
   become: true
   tasks:
   - name: building docker image
-    command: docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+    command: docker-compose -f /home/ansadmin/run-devops/Shopping/docker-compose.yml -f /home/ansadmin/run-devops/Shopping/docker-compose.override.yml up -d
 
   - name: tag docker image
     command: docker tag shoppingclient:latest nmhieuit/shoppingclient:latest
