@@ -1,2 +1,3 @@
 ansible-playbook /home/ansadmin/ansible/ci_client.yml;
+sleep 10;
 ansible-playbook -i /home/ansadmin/ansible/hosts /home/ansadmin/ansible/cd_client.yml
