@@ -6,8 +6,8 @@ metadata:
     app: shoppingclient
 spec:
   replicas: 2
-  # strategy:
-  #   type: Recreate
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: shoppingclient
