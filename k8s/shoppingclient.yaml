@@ -5,11 +5,11 @@ metadata:
   labels:
     app: shoppingclient
 spec:
-  replicas: 1
+  replicas: 3
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
+      maxSurge: 2
       maxUnavailable: 1
   selector:
     matchLabels:
