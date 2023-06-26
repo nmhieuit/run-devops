@@ -28,8 +28,6 @@ services:
       - com.datadoghq.tags.version=v1
     ports:
       - "8001:80"
-    networks:
-      - shopping_default
 
   shopping.db:
     container_name: shoppingdb
