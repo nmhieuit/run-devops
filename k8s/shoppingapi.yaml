@@ -4,6 +4,9 @@ metadata:
   name: shoppingapi-deployment
   labels:
     app: shoppingapi
+    tags.datadoghq.com/env: dev
+    tags.datadoghq.com/service: shoppingapi
+    tags.datadoghq.com/version: v1
 spec:
   replicas: 1
   selector:
@@ -13,6 +16,12 @@ spec:
     metadata:
       labels:
         app: shoppingapi
+        tags.datadoghq.com/env: dev
+        tags.datadoghq.com/service: shoppingapi
+        tags.datadoghq.com/version: v1
+        admission.datadoghq.com/enabled: "true"
+      annotations:
+        admission.datadoghq.com/dotnet-lib.version: v2.32.0
     spec:
       containers:
         - name: shoppingapi
@@ -21,6 +30,8 @@ spec:
           ports:
             - containerPort: 80
           env:
+            - name: DD_LOGS_INJECTION
+              value: "true"
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
             - name: DatabaseSettings__ConnectionString
