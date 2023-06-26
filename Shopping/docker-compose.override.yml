@@ -18,7 +18,8 @@ services:
       - DD_SERVICE=shoppingclient
       - DD_VERSION=v1
       - ASPNETCORE_ENVIRONMENT=Development 
-      - "ShoppingAPIUrl=http://shoppingapi"
+      - ShoppingAPIUrl=http://shoppingapi
+      - DD_LOGS_INJECTION=true
     depends_on:
       - shopping.db
       - shopping.api
