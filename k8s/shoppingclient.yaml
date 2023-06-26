@@ -29,14 +29,14 @@ spec:
         admission.datadoghq.com/dotnet-lib.version: v2.32.0
     spec:
       containers:
-        - name: DD_LOGS_INJECTION
-          value: "true"
         - name: shoppingclient
           image: nmhieuit/shoppingclient:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
           env:
+            - name: DD_LOGS_INJECTION
+              value: "true"
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
             - name: ShoppingAPIUrl
