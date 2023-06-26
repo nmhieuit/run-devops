@@ -4,6 +4,9 @@ metadata:
   name: shoppingclient-deployment
   labels:
     app: shoppingclient
+    tags.datadoghq.com/env: dev
+    tags.datadoghq.com/service: shoppingclient
+    tags.datadoghq.com/version: v1
 spec:
   replicas: 2
   strategy:
@@ -18,8 +21,16 @@ spec:
     metadata:
       labels:
         app: shoppingclient
+        tags.datadoghq.com/env: dev
+        tags.datadoghq.com/service: shoppingclient
+        tags.datadoghq.com/version: v1
+        admission.datadoghq.com/enabled: "true"
+      annotations:
+        admission.datadoghq.com/dotnet-lib.version: 
     spec:
       containers:
+        - name: DD_LOGS_INJECTION
+          value: "true"
         - name: shoppingclient
           image: nmhieuit/shoppingclient:latest
           imagePullPolicy: Always
