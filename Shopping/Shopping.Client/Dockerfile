@@ -25,7 +25,7 @@ ENTRYPOINT ["dotnet", "Shopping.Client.dll"]
 # Download and install the Tracer
 RUN mkdir -p /opt/datadog \
     && mkdir -p /var/log/datadog \
-    && TRACER_VERSION=$(curl -s https://api.github.com/repos/DataDog/dd-trace-dotnet/releases/latest | grep tag_name | cut -d '"' -f 4 | cut -c2-) \
+    && TRACER_VERSION=$(curl -s https://github.com/DataDog/dd-trace-dotnet/releases/tag/v2.32.0 | grep tag_name | cut -d '"' -f 4 | cut -c2-) \
     && curl -LO https://github.com/DataDog/dd-trace-dotnet/releases/download/v${TRACER_VERSION}/datadog-dotnet-apm_${TRACER_VERSION}_amd64.deb \
     && dpkg -i ./datadog-dotnet-apm_${TRACER_VERSION}_amd64.deb \
     && rm ./datadog-dotnet-apm_${TRACER_VERSION}_amd64.deb
