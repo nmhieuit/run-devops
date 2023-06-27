@@ -21,7 +21,12 @@ COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Shopping.Client.dll"]
 
 # Download and install the Tracer
-RUN mkdir -p /opt/datadog
+RUN mkdir -p /opt/datadog \
+    && mkdir -p /var/log/datadog \
+    && TRACER_VERSION=$(curl -s https://api.github.com/repos/DataDog/dd-trace-dotnet/releases/latest | grep tag_name | cut -d '"' -f 4 | cut -c2-) \
+    && curl -LO https://github.com/DataDog/dd-trace-dotnet/releases/download/v${TRACER_VERSION}/datadog-dotnet-apm_${TRACER_VERSION}-1.x86_64.rpm \
+    && yum install ./datadog-dotnet-apm_${TRACER_VERSION}-1.x86_64.rpm \
+    && rm ./datadog-dotnet-apm_${TRACER_VERSION}-1.x86_64.rpm
 
 # Enable the tracer
 ENV CORECLR_ENABLE_PROFILING=1
