@@ -21,7 +21,7 @@ COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Shopping.Client.dll"]
 
 # Download and install the Tracer
-RUN sudo mkdir -p /opt/datadog
+RUN mkdir -p /opt/datadog
 
 # Enable the tracer
 ENV CORECLR_ENABLE_PROFILING=1
