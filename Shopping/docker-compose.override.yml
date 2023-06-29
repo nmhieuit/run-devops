@@ -6,17 +6,17 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=mongodb://shoppingdb:27017"
-      - DD_ENV=dev
-      - DD_SERVICE=shoppingapi
-      - DD_VERSION=v1
-      - DD_LOGS_INJECTION=true
-      - DD_TRACE_SAMPLE_RATE=0.5
+      - DD_ENV="dev"
+      - DD_SERVICE="shoppingapi"
+      - DD_VERSION="v1"
+      - DD_LOGS_INJECTION="true"
+      - DD_TRACE_SAMPLE_RATE="0.5"
     depends_on:
       - shopping.db
     labels:
-      - com.datadoghq.tags.env=dev
-      - com.datadoghq.tags.service=shoppingapi
-      - com.datadoghq.tags.version=v1  
+      - com.datadoghq.tags.env="dev"
+      - com.datadoghq.tags.service="shoppingapi"
+      - com.datadoghq.tags.version="v1" 
     ports:
       - "8000:80"
 
@@ -25,18 +25,18 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development 
       - ShoppingAPIUrl=http://shoppingapi
-      - DD_ENV=dev
-      - DD_SERVICE=shoppingclient
-      - DD_VERSION=v1
-      - DD_LOGS_INJECTION=true
-      - DD_TRACE_SAMPLE_RATE=0.5
+      - DD_ENV="dev"
+      - DD_SERVICE="shoppingclient"
+      - DD_VERSION="v1"
+      - DD_LOGS_INJECTION="true"
+      - DD_TRACE_SAMPLE_RATE="0.5"
     depends_on:
       - shopping.db
       - shopping.api
     labels:
-      - com.datadoghq.tags.env=dev
-      - com.datadoghq.tags.service=shoppingclient
-      - com.datadoghq.tags.version=v1
+      - com.datadoghq.tags.env="dev"
+      - com.datadoghq.tags.service="shoppingclient"
+      - com.datadoghq.tags.version="1"
     ports:
       - "8001:80"
 
