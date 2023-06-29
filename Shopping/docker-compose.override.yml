@@ -6,6 +6,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=mongodb://shoppingdb:27017"
+      - DD_ENV=Development
+      - DD_SERVICE=shoppingclient
+      - DD_VERSION=v1
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_SAMPLE_RATE=0.5
     depends_on:
       - shopping.db
     ports:
@@ -14,12 +19,13 @@ services:
   shopping.client:
     container_name: shoppingclient
     environment:
+      - ASPNETCORE_ENVIRONMENT=Development 
+      - ShoppingAPIUrl=http://shoppingapi
       - DD_ENV=Development
       - DD_SERVICE=shoppingclient
       - DD_VERSION=v1
-      - ASPNETCORE_ENVIRONMENT=Development 
-      - ShoppingAPIUrl=http://shoppingapi
       - DD_LOGS_INJECTION=true
+      - DD_TRACE_SAMPLE_RATE=0.5
     depends_on:
       - shopping.db
       - shopping.api
